@@ -866,9 +866,9 @@ QMimeData* BaseSqlTableModel::mimeData(const QModelIndexList &indexes) const {
 QAbstractItemDelegate* BaseSqlTableModel::delegateForColumn(const int i, QObject* pParent) {
     if (i == fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_RATING)) {
         return new StarDelegate(pParent);
-    } else if (i == fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_BPM)) {
+    }/* else if (i == fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_BPM)) {
         return new BPMDelegate(pParent, i, fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_BPM_LOCK));
-    } else if (PlayerManager::numPreviewDecks() > 0 && i == fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_PREVIEW)) {
+    }*/ else if (PlayerManager::numPreviewDecks() > 0 && i == fieldIndex(ColumnCache::COLUMN_LIBRARYTABLE_PREVIEW)) {
         return new PreviewButtonDelegate(pParent, i);
     }
     return NULL;

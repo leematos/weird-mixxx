@@ -11,6 +11,7 @@
 
 #include "util/types.h"
 #include "util/math.h"
+#include <stdlib.h>
 
 struct Hint;
 class EngineControl;
