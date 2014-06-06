@@ -64,6 +64,7 @@ WSearchLineEdit::WSearchLineEdit(QWidget* pParent)
 WSearchLineEdit::~WSearchLineEdit() {
 }
 
+
 void WSearchLineEdit::setup(QDomNode node, const SkinContext& context) {
     // Background color
     QColor bgc(255,255,255);
@@ -101,6 +102,7 @@ void WSearchLineEdit::resizeEvent(QResizeEvent* e) {
 void WSearchLineEdit::focusInEvent(QFocusEvent* event) {
     QLineEdit::focusInEvent(event);
     if (m_place) {
+        setAttribute(Qt::WA_MacShowFocusRect, false);
         //Must block signals here so that we don't emit a search() signal via
         //textChanged().
         blockSignals(true);
