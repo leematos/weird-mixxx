@@ -2,17 +2,17 @@
 
 BPMEditor::BPMEditor(EditMode mode, QWidget *parent)
           :QWidget(parent),
-           //m_pLock(new QPushButton(this)),
+           m_pLock(new QPushButton(this)),
            // m_pBPMSpinBox(NULL),
            m_pBPMLabel(NULL),
            m_pLayout(new QHBoxLayout(this)) {
     setObjectName("LibraryBPM");
     // configure Lock Button
-    //m_pLock->setMaximumWidth(20);
-    //m_pLock->setCheckable(true);
-    //m_pLock->setChecked(false);
-    //m_pLock->setObjectName("LibraryBPMButton");
-    //m_pLayout->addWidget(m_pLock);
+    m_pLock->setMaximumWidth(20);
+    m_pLock->setCheckable(true);
+    m_pLock->setChecked(false);
+    m_pLock->setObjectName("LibraryBPMButton");
+    m_pLayout->addWidget(m_pLock);
     if (mode==Editable && !getLock()) {
       //m_pBPMSpinBox = new QDoubleSpinBox(this);
       //m_pBPMSpinBox->setMinimum(0);
@@ -33,7 +33,7 @@ BPMEditor::BPMEditor(EditMode mode, QWidget *parent)
     //add all to our widget
     setLayout(m_pLayout);
     //connect signals
-    //connect(m_pLock, SIGNAL(clicked(bool)), this, SIGNAL(finishedEditing()));
+    connect(m_pLock, SIGNAL(clicked(bool)), this, SIGNAL(finishedEditing()));
 }
 
 BPMEditor::~BPMEditor(){
@@ -57,7 +57,7 @@ void BPMEditor::setData(const QModelIndex &index, int lockColumn){
         // cut of BPM two digits after the dot
         int bpm = index.data().toDouble()*1e2;
         m_pBPMLabel->setText(QString::number(bpm*1e-2));
-    /*}
+    /*}*/
     m_pLock->setChecked(index.sibling(index.row(),lockColumn).data().toBool());
-*/
+/**/
 }
